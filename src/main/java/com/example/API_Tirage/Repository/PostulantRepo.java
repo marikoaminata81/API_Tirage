@@ -11,4 +11,7 @@ public interface PostulantRepo extends JpaRepository<Postulants,Long> {
     @Transactional
     @Query(value = "INSERT INTO postulants(nom_postulant, prenom_postulant,numero_postulant, email_postulant) value(?,?,?,?)", nativeQuery = true)
      int InsertPostulant(String nom, String prenom, String numero, String email);
+
+   /* @Query(value = "SELECT nom_postulant, prenom_postulant FROM postulants ORDER BY RAND() LIMIT 5", nativeQuery=true)
+    String Rn();*/
 }
