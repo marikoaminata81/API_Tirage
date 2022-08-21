@@ -20,4 +20,8 @@ public class Postulants {
     private  long idPost;
     private  String nomPostulant,prenomPostulant,emailPostulant;
     private  String numeroPostulant;
+
+    @ManyToOne
+    @JoinColumn(name = "id_liste_postulant")
+    private ListePostulant idListePostulant;
 }

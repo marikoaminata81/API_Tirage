@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "Tirage")
@@ -17,7 +18,11 @@ import javax.persistence.*;
 public class Tirage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  long idTirage;
-            private String libelleTirage;
-    private  long dateTirage;
+    private  Long idTirage;
+    private String libelletirage;
+    private Date dateTirage;
+
+    @ManyToOne
+    @JoinColumn(name = "liste_postulant_id_liste_postulant")
+    private  ListePostulant listePostulant;
 }

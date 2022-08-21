@@ -7,8 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface TirageRepo extends JpaRepository<Tirage,Long> {
-    @Modifying
-    @Transactional
-    @Query(value = "SELECT * FROM postulants ORDER BY RAND() LIMIT 5", nativeQuery=true)
-    Iterable<Object[]> TirageMethod();
+
+Tirage  findByLibelletirage(String libelle);
 }
+
