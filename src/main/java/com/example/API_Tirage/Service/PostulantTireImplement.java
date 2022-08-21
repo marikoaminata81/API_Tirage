@@ -19,5 +19,10 @@ private final PostulantTireRepo ptr;
         return ptr.INSERTPOSTTIRE(idPostulant,nomPostulant,prenomPostulant,emailPostulant,numeroPostulant,id_tirage);
     }
 
+    @Override
+    public Iterable<Object[]> AfficherTousPostulantsTirer() {
+        return ptr.RequetteAfficherPsTr();
+    }
+
 
 }

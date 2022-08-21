@@ -8,4 +8,6 @@ public interface PostulantTireService {
    // public Iterable<Object[]> TirageMethod() ;
 
 int creer(Long idPostulant,String nomPostulant, String prenomPostulant,String emailPostulant,String numeroPostulant,long id_tirage);
+
+    Iterable<Object[]> AfficherTousPostulantsTirer();
 }

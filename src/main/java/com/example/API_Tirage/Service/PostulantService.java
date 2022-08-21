@@ -113,6 +113,11 @@ public class PostulantService implements PostulantServInter {
     public List<Postulants> TrouveridPostList(long idListe) {
         return pr.FINDIDPOSTLIST(idListe);
     }
+
+    @Override
+    public Iterable<Object[]> AfficherTousPostulants() {
+        return pr.RequetteAfficher();
+    }
   /*  @Override
     public void ImportDonner(MultipartFile file) {
 

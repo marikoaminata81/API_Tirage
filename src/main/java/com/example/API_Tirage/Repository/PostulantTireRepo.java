@@ -12,5 +12,9 @@ public interface PostulantTireRepo extends JpaRepository<PostulantTire,Long> {
     @Transactional
     @Query(value = "INSERT INTO postulant_tire(id_post,nom_postulant,prenom_postulant,numero_postulant,email_postulant,id_tirage) values(?,?,?,?,?,?)", nativeQuery=true)
   public  int INSERTPOSTTIRE(Long idPost, String nomPostulant,String PrenomPostulant,String numeroPostulant,String emailPostulant, Long id_tirage);
+
+
+    @Query(value = "SELECT * from postulant_tire",nativeQuery = true)
+    Iterable<Object[]> RequetteAfficherPsTr();
 }
 

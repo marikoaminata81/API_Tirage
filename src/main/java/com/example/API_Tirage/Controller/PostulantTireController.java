@@ -6,36 +6,31 @@ import com.example.API_Tirage.Model.Tirage;
 import com.example.API_Tirage.Service.PostulantTireService;
 import com.example.API_Tirage.Service.TirageInterface;
 import com.example.API_Tirage.Service.TirageServImple;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+
+@RestController
+@RequestMapping("/postulantTire")
+@AllArgsConstructor
+@NoArgsConstructor
 public class PostulantTireController {
-
+@Autowired
     private PostulantTireService pts;
-    private TirageServImple tsi;
 
-   /* @GetMapping("/tirer")
-    public  Iterable<Object[]>  Tirage(){
-        return pts.TirageMethod();
+    @GetMapping("/AffichagePostTirer")
+    public   Iterable<Object[]> AfficherTousPostulants(){
+        return pts.AfficherTousPostulantsTirer();
+    }
 
-    }*/
 
-  /*  public String Importer(Tirage tirage, String libelle){
-  //      ArrayList<Postulants> importer = postulantService.ImportDonner(file);
-
-        tirage.setDateTirage(new Date());
-        Tirage l = tsi.CreerTirage(tirage);
-
-    /*    for (Postulants p: importer)
-        {
-            p.setIdListePostulant(l);
-            postulantService.creerPostulants(p);
-        }
-        postulantService.ImportDonner(file);
-        return "Importer avec succes";
-    }*/
 }

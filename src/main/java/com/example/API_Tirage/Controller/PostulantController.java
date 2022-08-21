@@ -42,7 +42,13 @@ public class PostulantController {
         }
         postulantService.ImportDonner(file);
 
+
         return "Importer avec succes";
+    }
+
+    @GetMapping("/AffichageTousPosts")
+  public   Iterable<Object[]> AfficherTousPostulants(){
+        return postulantService.AfficherTousPostulants();
     }
 
 

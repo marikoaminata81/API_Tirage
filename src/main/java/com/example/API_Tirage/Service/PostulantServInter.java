@@ -15,4 +15,7 @@ public interface PostulantServInter {
     Postulants creerPostulants (Postulants postulants);
 
 List<Postulants> TrouveridPostList(long idListe);
+
+
+    Iterable<Object[]> AfficherTousPostulants();
 }

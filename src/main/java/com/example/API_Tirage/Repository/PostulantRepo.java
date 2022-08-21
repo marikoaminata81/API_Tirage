@@ -14,6 +14,9 @@ public interface PostulantRepo extends JpaRepository<Postulants,Long> {
     public List<Postulants> FINDIDPOSTLIST(@Param("idListePostulant") Long idListePostulant);
 
 
+    @Query(value = "SELECT * from postulants",nativeQuery = true)
+    Iterable<Object[]> RequetteAfficher();
+
   /*  @Modifying
     @Transactional
     @Query(value = "INSERT INTO postulants(nom_postulant, prenom_postulant,numero_postulant, email_postulant) value(?,?,?,?)", nativeQuery = true)

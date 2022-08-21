@@ -17,13 +17,14 @@ import java.util.List;
 @RequestMapping(value = "/tirage")
 @AllArgsConstructor
 public class TirageController {
-    private  final ListePostulantService listePostulantService;
+    private final ListePostulantService listePostulantService;
 
-    private  final  TirageInterface tirageInterface;
-    private  final PostulantService postulantService;
-    private  final PostulantTireService postulantTireService;
+    private final TirageInterface tirageInterface;
+    private final PostulantService postulantService;
+    private final PostulantTireService postulantTireService;
+
     @PostMapping("/creerTirage/{libelle}/{nombre}")
-    public String create(@RequestBody Tirage tirage , @PathVariable String libelle, @PathVariable Long nombre, ListePostulant listeP){
+    public String create(@RequestBody Tirage tirage, @PathVariable String libelle, @PathVariable Long nombre, ListePostulant listeP) {
         ListePostulant liste = listePostulantService.trouverListeParLibelle(libelle);
         List<Postulants> postulant = postulantService.TrouveridPostList(liste.getIdListePostulant());
 
@@ -31,13 +32,20 @@ public class TirageController {
 
         Long idTirage = tirageInterface.trouverTirageParLibelle(tirage.getLibelletirage()).getIdTirage();
         //ListePostulant l = listePostulantService.CreerListe(listeP);
-        for(Postulants p: lp){
-          //  p.setIdListePostulant(l);
-            postulantTireService.creer(p.getIdPost(),p.getNomPostulant(),p.getPrenomPostulant(),p.getNumeroPostulant(),p.getEmailPostulant(),idTirage);
+        for (Postulants p : lp) {
+            //  p.setIdListePostulant(l);
+            postulantTireService.creer(p.getIdPost(), p.getNomPostulant(), p.getPrenomPostulant(), p.getNumeroPostulant(), p.getEmailPostulant(), idTirage);
 
 
         }
-           return  "succes";
+        return "succes";
     }
 
+
+    @PutMapping("/modifierTirage/{idTirage}")
+    public Tirage modifer(@PathVariable Long idTirage, @RequestBody Tirage tirage) {
+        return tirageInterface.modifierTirage(idTirage, tirage);
+
+
+    }
 }

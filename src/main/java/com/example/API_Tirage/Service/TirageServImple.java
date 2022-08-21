@@ -16,6 +16,21 @@ public class TirageServImple implements TirageInterface{
    private  TirageRepo tireRep;
 
 
+
+   // mOdifier la tirage
+   @Override
+   public Tirage modifierTirage(Long idTirage, Tirage tirage) {
+      return tireRep.findById(idTirage).map(
+              p->{
+                 p.setDateTirage(tirage.getDateTirage());
+                 p.setLibelletirage(tirage.getLibelletirage());
+                 p.setListePostulant(tirage.getListePostulant());
+
+                 return tireRep.save(p);
+              }
+      ).orElseThrow(() -> new RuntimeException("Region non trouvé"));
+   }
+
    @Override
    public List<Postulants> CreerTirage(Tirage tirage, List<Postulants> listAtrier, long nbre) {
 
