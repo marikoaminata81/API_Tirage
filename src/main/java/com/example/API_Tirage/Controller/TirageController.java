@@ -24,20 +24,29 @@ public class TirageController {
     private final PostulantTireService postulantTireService;
 
     @PostMapping("/creerTirage/{libelle}/{nombre}")
-    public String create(@RequestBody Tirage tirage, @PathVariable String libelle, @PathVariable Long nombre, ListePostulant listeP) {
-        ListePostulant liste = listePostulantService.trouverListeParLibelle(libelle);
-        List<Postulants> postulant = postulantService.TrouveridPostList(liste.getIdListePostulant());
+    public String create(@RequestBody Tirage tirage, @PathVariable String libelle, @PathVariable Long nombre,ListePostulant listeP) {
 
-        List<Postulants> lp = tirageInterface.CreerTirage(tirage, postulant, nombre);
+if(tirageInterface.trouverTirageParLibelle(tirage.getLibelletirage())==null) {
 
-        Long idTirage = tirageInterface.trouverTirageParLibelle(tirage.getLibelletirage()).getIdTirage();
-        //ListePostulant l = listePostulantService.CreerListe(listeP);
-        for (Postulants p : lp) {
-            //  p.setIdListePostulant(l);
-            postulantTireService.creer(p.getIdPost(), p.getNomPostulant(), p.getPrenomPostulant(), p.getNumeroPostulant(), p.getEmailPostulant(), idTirage);
+    ListePostulant liste = listePostulantService.trouverListeParLibelle(libelle);
+
+    List<Postulants> postulant = postulantService.TrouveridPostList(liste.getIdListePostulant());
+
+    List<Postulants> lp = tirageInterface.CreerTirage(tirage, postulant, nombre);
+
+    Long idTirage = tirageInterface.trouverTirageParLibelle(tirage.getLibelletirage()).getIdTirage();
+    //ListePostulant l = listePostulantService.CreerListe(listeP);
+    for (Postulants p : lp) {
+        //  p.setIdListePostulant(l);
+        postulantTireService.creer(p.getIdPost(), p.getNomPostulant(), p.getPrenomPostulant(), p.getNumeroPostulant(), p.getEmailPostulant(), idTirage);
+
+    }
+}
+else{
+    return "Tirage existant";
+}
 
 
-        }
         return "succes";
     }
 

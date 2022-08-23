@@ -28,7 +28,7 @@ public class TirageServImple implements TirageInterface{
 
                  return tireRep.save(p);
               }
-      ).orElseThrow(() -> new RuntimeException("Region non trouvé"));
+      ).orElseThrow(() -> new RuntimeException("Tirage non trouver"));
    }
 
    @Override

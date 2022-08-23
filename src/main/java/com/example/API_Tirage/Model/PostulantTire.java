@@ -7,7 +7,9 @@ import javax.persistence.*;
 public class PostulantTire {
 
     @Id
-   // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  long id;
+
     private Long idPost;
     private String nomPostulant;
     private String prenomPostulant;
