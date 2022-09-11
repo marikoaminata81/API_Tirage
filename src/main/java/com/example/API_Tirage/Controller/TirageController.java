@@ -57,4 +57,13 @@ else{
 
 
     }
+    //tout liste
+    @GetMapping("/AffichageTouteslistes")
+    public Iterable<Object[]> affpos(){
+        return listePostulantService.AfficherTouteslistes();    }
+
+    //Count Liste
+    @GetMapping("/NombreListe")
+    public Long ToutesListe(){
+        return listePostulantService.NombreTotalListe();    }
 }

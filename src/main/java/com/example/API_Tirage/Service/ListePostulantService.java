@@ -18,6 +18,17 @@ public class ListePostulantService implements ListePostulantServInterface{
         return listePostulantRepo.save(listePostulant);
     }
 
+    //fonctio rechercher toutes les listes
+    @Override
+    public Iterable<Object[]> AfficherTouteslistes() {
+        return listePostulantRepo.RequetteAfficher();
+    }
+
+    @Override
+    public Long NombreTotalListe() {
+        return listePostulantRepo.nombreliste();
+    }
+
     @Override
     public ListePostulant trouverListeParLibelle(String libelle) {
 

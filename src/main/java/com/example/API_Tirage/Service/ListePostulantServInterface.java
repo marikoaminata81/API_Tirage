@@ -8,4 +8,8 @@ public interface ListePostulantServInterface {
     ListePostulant CreerListe(ListePostulant listePostulant);
 
     ListePostulant trouverListeParLibelle(String libelle);
+    //toutes listPost
+    Iterable<Object[]> AfficherTouteslistes();
+
+    Long NombreTotalListe();
 }

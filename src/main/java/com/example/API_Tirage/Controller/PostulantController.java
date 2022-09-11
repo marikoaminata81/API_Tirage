@@ -46,6 +46,7 @@ public class PostulantController {
         return "Importer avec succes";
     }
 
+
     @GetMapping("/AffichageTousPosts")
 public Iterable<Object[]> affpos(){
         return postulantService.AfficherTousPostulants();
